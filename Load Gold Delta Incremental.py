@@ -33,7 +33,7 @@ df_silver = spark.read.format('parquet').load(silver_path) \
                         .filter(f'Data > "{max_data_vendas}"')
 
 
-display(df_silver)
+#display(df_silver)
 
 # COMMAND ----------
 
@@ -57,7 +57,7 @@ dim_produto_df = dim_produto_df.withColumn('Sk_produto', monotonically_increasin
 
 dim_produto_df.write.format('delta').mode('overwrite').option('mergeSchema', 'true').save(f'{gold_path}/{tb_destino}')
 
-display(dim_produto_df)
+#display(dim_produto_df)
 
 # COMMAND ----------
 
@@ -75,7 +75,7 @@ dim_categoria_df = df_silver.select(
 dim_categoria_df = dim_categoria_df.withColumn('Sk_categoria', monotonically_increasing_id()+1) \
                                     .withColumn('data_atualizacao', current_timestamp())
 
-display(dim_categoria_df)
+#display(dim_categoria_df)
 
 dim_categoria_df.write.format('delta').mode('overwrite').option('mergeSchema', 'true').save(f'{gold_path}/{tb_destino}')
 
@@ -203,7 +203,7 @@ fato_vendas_df = df_silver.alias('s') \
         col('s.TotalVendas'),
         current_timestamp().alias('data_atualizacao')
     )
-display(fato_vendas_df)
+#display(fato_vendas_df)
 
 fato_vendas_df.withColumn('Ano', year('DataVenda')) \
             .withColumn('Mes', month('DataVenda')) \
@@ -227,6 +227,7 @@ test = resultado.select('Ano').distinct()
 
 #display(test)
 
+# Pequena validação para garantir que as tabelas foram carregadas
 if test.filter(col('Ano') > 2011).count() > 0:
     print('OK')
 else:

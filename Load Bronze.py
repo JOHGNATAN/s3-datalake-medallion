@@ -59,3 +59,6 @@ if distinct_filenames.select("filename").distinct().count() > 0:
             dbutils.fs.rm(lz_income_data + "/" + src_path)
         except Exception as e:
             display(f"Ocorreu um erro:{e}")
+
+else:
+    print('Nenhum arquivo encontrado!')
