@@ -30,6 +30,7 @@ distinct_filenames = df_vendas.select("filename").distinct()
 
 # COMMAND ----------
 
+# simulando grande quantidade de dados, por isso o partitionBy, o que melhora na hora de realizar consultas por mês/ano
 df_vendas.withColumn('Ano', year('Data')) \
             .withColumn('Mes', month('Data')) \
             .write.mode('overwrite') \

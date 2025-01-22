@@ -184,6 +184,7 @@ fato_vendas_df = df_silver.alias('s') \
     )
 #display(fato_vendas_df)
 
+# simulando grande quantidade de dados, por isso o partitionBy, o que melhora na hora de realizar consultas por mês/ano
 fato_vendas_df.withColumn('Ano', year('DataVenda')) \
             .withColumn('Mes', month('DataVenda')) \
             .write.format('delta') \

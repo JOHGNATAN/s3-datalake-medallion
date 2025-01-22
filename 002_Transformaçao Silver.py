@@ -37,6 +37,7 @@ df_bronze.unpersist()
 
 # COMMAND ----------
 
+# simulando grande quantidade de dados, por isso o partitionBy, o que melhora na hora de realizar consultas por mês/ano
 df_silver.withColumn('Ano', year('Data')) \
             .withColumn('Mes', month('Data')) \
             .write.option('maxRecordsPerFile', 50000) \
