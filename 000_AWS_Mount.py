@@ -1,8 +1,10 @@
 # Databricks notebook source
+
 from pyspark.sql.functions import *
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 
+# Criando uma sessão
 spark = SparkSession.builder \
                     .appName('test') \
                     .getOrCreate()
