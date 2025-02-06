@@ -27,6 +27,6 @@ O objetivo deste projeto é demonstrar como utilizar o Databricks para realizar 
 
 ## Tecnologias Utilizadas
 
-- **Databricks**: Plataforma de análise de dados baseada em Apache Spark.
+- **Databricks**: Plataforma de dados baseada em Apache Spark.
 - **AWS S3**: Serviço de armazenamento de objetos da Amazon Web Services.
 - **Delta Lake**: Camada de armazenamento que traz confiabilidade aos Data Lakes.
